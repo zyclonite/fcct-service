@@ -1,0 +1,25 @@
+variant: fcos
+version: 1.0.0
+systemd:
+  units:
+    - name: test.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Test
+        After=network-online.target
+        Wants=network.target
+
+        [Service]
+        ExecStart=/usr/bin/test
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: docker.service
+      mask: true
+storage:
+  files:
+    - path: /etc/test.cfg
+      mode: 0600
+      contents:
+        inline: "test-test-test"

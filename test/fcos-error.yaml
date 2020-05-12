@@ -1,0 +1,5 @@
+variant: fcos
+version: 1.0.0
+systemError:
+storage:
+  nothing:
