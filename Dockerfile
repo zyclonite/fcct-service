@@ -11,6 +11,7 @@ LABEL version="0.5.0"
 LABEL description="FCCT as a Service"
 
 COPY --from=builder /go/src/fcct-service /
+COPY --from=builder /go/src/public /public/
 
 EXPOSE 8080
 

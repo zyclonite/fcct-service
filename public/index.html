@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="icon" sizes="192x192" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+  <title>fcct-service</title>
+</head>
+<body>
+  <span id="toast" class="toast hidden"></span>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h1>fcct-service</h1>
+        <textarea id="yamlInput" rows="10" cols="60">
+variant: fcos
+version: 1.0.0
+storage:
+  files:
+    - path: /etc/helloworld
+      contents:
+        inline: Hello, world!
+        </textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <button id="transpileButton" class="secondary">Transpile</button>
+        <button id="validateButton" class="primary">Validate</button>
+        <button id="clearButton">Clear</button>
+        <label for="strictCheckbox">Strict</label>
+        <input type="checkbox" autocomplete="off" id="strictCheckbox">
+        <label for="prettyCheckbox">Pretty</label>
+        <input type="checkbox" autocomplete="off" id="prettyCheckbox">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <textarea id="jsonOutput" rows="10" cols="60" readonly></textarea>
+      </div>
+    </div>
+  </div>
+  <script defer src="script.js"></script>
+</body>
+</html>

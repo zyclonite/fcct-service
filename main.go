@@ -56,5 +56,7 @@ func main() {
 	api := r.PathPrefix("/api/v1").Subrouter()
 	api.HandleFunc("/transpile", transpile).Methods(http.MethodPost)
 
+	r.PathPrefix("/").Handler(http.FileServer(http.Dir("public")))
+
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
