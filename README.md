@@ -14,3 +14,7 @@ FCCT as a Service
 `curl -X POST --data-binary @test/fcos-config.yaml -H "Content-type: text/x-yaml" http://127.0.0.1:8080/api/v1/transpile?pretty=true&strict=false`
 
 or open `http://127.0.0.1:8080/` in your browser for a simplistic ui
+
+### demo
+
+see [fcct.wsn.at](https://fcct.wsn.at)
