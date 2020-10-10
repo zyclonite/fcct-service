@@ -1,7 +1,11 @@
 [![Docker Pulls](https://badgen.net/docker/pulls/zyclonite/fcct-service)](https://hub.docker.com/r/zyclonite/fcct-service)
 
 ## fcct-service
-FCCT as a Service
+The [Fedora CoreOS Config Transpiler](https://github.com/coreos/fcct) (FCCT) as a Service
+
+An API to translate human readable Fedora CoreOS Configs (FCCs) into machine readable [Ignition](https://github.com/coreos/ignition) Configs. See the [getting
+started](https://github.com/coreos/fcct/blob/master/docs/getting-started.md) guide for how to use FCCT and the [configuration
+specifications](https://github.com/coreos/fcct/blob/master/docs/specs.md) for everything FCCs support.
 
 ### build
 
