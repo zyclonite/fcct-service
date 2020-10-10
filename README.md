@@ -1,3 +1,5 @@
+[![Docker Pulls](https://badgen.net/docker/pulls/zyclonite/fcct-service)](https://hub.docker.com/r/zyclonite/fcct-service)
+
 ## fcct-service
 FCCT as a Service
 
