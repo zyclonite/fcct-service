@@ -17,7 +17,33 @@ clearButton.addEventListener("click", (e) => {
   yamlInput.value = "";
 }, false);
 validateButton.addEventListener("click", (e) => {
-  showNotification("not implemented yet");
+  let input = jsonOutput.value;
+  if (input.length <= 0) {
+    showNotification("transpile first");
+    return;
+  }
+  fetch('api/v1/validate', {
+      body: input,
+      headers: {
+        'content-type': 'application/json'
+      },
+      method: 'POST'
+    })
+    .then((response) => {
+      if (!response.ok) {
+        response.json().then((json) => {
+          showNotification(json.error);
+        });
+        return response.statusText;
+      }
+      return response.text();
+    })
+    .then((output) => {
+      showNotification("valid");
+    })
+    .catch((error) => {
+      showNotification(error);
+    });
 }, false);
 transpileButton.addEventListener("click", (e) => {
   let input = yamlInput.value;

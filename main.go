@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -8,6 +9,7 @@ import (
 
 	"github.com/coreos/fcct/config"
 	"github.com/coreos/fcct/config/common"
+	iconfig "github.com/coreos/ignition/v2/config"
 	"github.com/gorilla/mux"
 )
 
@@ -50,11 +52,50 @@ func transpile(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func validate(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		log.Printf("Error reading body: %v", err)
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(`{"error":"can't read body"}`))
+		return
+	}
+
+	cfg, rpt, err := iconfig.Parse(body)
+	if err != nil {
+		log.Printf("Error validating config: %v\n", err)
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(`{"error":"can't validate config"}`))
+		return
+	}
+
+	if len(rpt.Entries) > 0 {
+		w.WriteHeader(http.StatusNotAcceptable)
+		w.Write([]byte(`{"error":"validation failed", "reason":"` + rpt.String() + `"}`))
+		return
+	}
+	jsonConfig, jsonerr := json.MarshalIndent(cfg, "", "  ")
+	if jsonerr != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte(`{"error":"config json marshalling failed"}`))
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	if _, err := w.Write(append(jsonConfig, '\n')); err != nil {
+		log.Printf("Failed to write validated config: %v\n", err)
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte(`{"error":"internal server error"}`))
+		return
+	}
+}
+
 func main() {
 	r := mux.NewRouter()
 
 	api := r.PathPrefix("/api/v1").Subrouter()
 	api.HandleFunc("/transpile", transpile).Methods(http.MethodPost)
+	api.HandleFunc("/validate", validate).Methods(http.MethodPost)
 
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("public")))
 
