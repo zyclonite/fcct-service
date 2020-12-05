@@ -32,10 +32,10 @@ func transpile(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(`{"error":"can't read body"}`))
 		return
 	}
-	options := common.TranslateOptions{}
+	options := common.TranslateBytesOptions{}
 	options.Pretty = pretty
 	options.Strict = strict
-	dataOut, _, err := config.Translate(body, options)
+	dataOut, _, err := config.TranslateBytes(body, options)
 	if err != nil {
 		log.Printf("Error translating config: %v\n", err)
 		w.WriteHeader(http.StatusBadRequest)
