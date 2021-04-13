@@ -1,4 +1,4 @@
-FROM golang:1.15-alpine as builder
+FROM golang:1.16-alpine as builder
 
 COPY . /go/src
 
@@ -7,7 +7,7 @@ RUN cd src \
   && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -ldflags "-s -w"
 
 FROM scratch
-LABEL version="0.10.0"
+LABEL version="0.11.0"
 LABEL description="FCCT as a Service"
 
 COPY --from=builder /go/src/fcct-service /

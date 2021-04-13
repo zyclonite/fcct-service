@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/coreos/fcct/config"
-	"github.com/coreos/fcct/config/common"
+	"github.com/coreos/butane/config"
+	"github.com/coreos/butane/config/common"
 	iconfig "github.com/coreos/ignition/v2/config"
 	"github.com/gorilla/mux"
 )
