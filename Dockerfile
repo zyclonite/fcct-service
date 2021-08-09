@@ -7,7 +7,7 @@ RUN cd src \
   && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -ldflags "-s -w"
 
 FROM scratch
-LABEL version="0.13.0"
+LABEL version="0.13.1"
 LABEL description="FCCT as a Service"
 
 COPY --from=builder /go/src/fcct-service /
