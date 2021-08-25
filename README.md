@@ -1,4 +1,5 @@
 [![Docker Pulls](https://badgen.net/docker/pulls/zyclonite/fcct-service)](https://hub.docker.com/r/zyclonite/fcct-service)
+[![build](https://github.com/zyclonite/fcct-service/actions/workflows/build.yml/badge.svg)](https://github.com/zyclonite/fcct-service/actions/workflows/build.yml)
 
 ## fcct-service
 The [Fedora CoreOS Config Transpiler](https://github.com/coreos/butane) (Butane) as a Service
