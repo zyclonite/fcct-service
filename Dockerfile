@@ -4,7 +4,7 @@ COPY . /go/src
 
 RUN cd src \
   && go mod download \
-  && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -ldflags "-s -w"
+  && CGO_ENABLED=0 go build -v -a -ldflags "-s -w"
 
 FROM scratch
 
