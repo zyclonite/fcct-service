@@ -34,12 +34,18 @@ func transpile(w http.ResponseWriter, r *http.Request) {
 	}
 	options := common.TranslateBytesOptions{}
 	options.Pretty = pretty
-	options.Strict = strict
-	dataOut, _, err := config.TranslateBytes(body, options)
+	dataOut, report, err := config.TranslateBytes(body, options)
 	if err != nil {
 		log.Printf("Error translating config: %v\n", err)
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte(`{"error":"can't translate config"}`))
+		return
+	}
+
+	if strict && len(report.Entries) > 0 {
+		log.Print("Config produced warnings and strict was specified\n")
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(`{"error":"config produced warnings and strict was specified"}`))
 		return
 	}
 
