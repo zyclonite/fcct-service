@@ -2,7 +2,7 @@ package main
 
 import (
 	"bytes"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -16,7 +16,7 @@ func TestValidConfig(t *testing.T) {
 	}
 	defer infile.Close()
 
-	dataIn, err := ioutil.ReadAll(infile)
+	dataIn, err := io.ReadAll(infile)
 	if err != nil {
 		t.Fatalf("failed to read %s: %v\n", infile.Name(), err)
 	}
@@ -45,7 +45,7 @@ func TestInvalidConfig(t *testing.T) {
 	}
 	defer infile.Close()
 
-	dataIn, err := ioutil.ReadAll(infile)
+	dataIn, err := io.ReadAll(infile)
 	if err != nil {
 		t.Fatalf("failed to read %s: %v\n", infile.Name(), err)
 	}

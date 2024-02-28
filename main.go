@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"strconv"
@@ -25,7 +25,7 @@ func transpile(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		log.Printf("Error reading body: %v", err)
 		w.WriteHeader(http.StatusBadRequest)
@@ -60,7 +60,7 @@ func transpile(w http.ResponseWriter, r *http.Request) {
 
 func validate(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		log.Printf("Error reading body: %v", err)
 		w.WriteHeader(http.StatusBadRequest)
