@@ -3,13 +3,13 @@ module github.com/zyclonite/fcct-service
 go 1.21
 
 require (
-	github.com/coreos/butane v0.19.0
-	github.com/coreos/ignition/v2 v2.16.2
-	github.com/gorilla/mux v1.8.0
+	github.com/coreos/butane v0.20.0
+	github.com/coreos/ignition/v2 v2.17.0
+	github.com/gorilla/mux v1.8.1
 )
 
 require (
-	github.com/aws/aws-sdk-go v1.44.298 // indirect
+	github.com/aws/aws-sdk-go v1.47.9 // indirect
 	github.com/clarketm/json v1.17.1 // indirect
 	github.com/coreos/go-json v0.0.0-20230131223807-18775e0fb4fb // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
