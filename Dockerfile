@@ -11,7 +11,7 @@ RUN cd src \
 FROM scratch
 
 LABEL org.opencontainers.image.title="fcct-service" \
-      org.opencontainers.image.version="0.20.0" \
+      org.opencontainers.image.version="0.21.0" \
       org.opencontainers.image.description="FCCT (butane) as a Service" \
       org.opencontainers.image.licenses="Apache-2.0" \
       org.opencontainers.image.source="https://github.com/zyclonite/fcct-service"
