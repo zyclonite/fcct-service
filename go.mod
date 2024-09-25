@@ -1,9 +1,9 @@
 module github.com/zyclonite/fcct-service
 
-go 1.22
+go 1.23
 
 require (
-	github.com/coreos/butane v0.21.0
+	github.com/coreos/butane v0.22.0
 	github.com/coreos/ignition/v2 v2.18.0
 	github.com/gorilla/mux v1.8.1
 )
