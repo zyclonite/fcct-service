@@ -3,7 +3,7 @@ module github.com/zyclonite/fcct-service
 go 1.26
 
 require (
-	github.com/coreos/butane v0.27.0
+	github.com/coreos/butane v0.28.0
 	github.com/coreos/ignition/v2 v2.26.0
 	github.com/gorilla/mux v1.8.1
 )
