@@ -1,6 +1,6 @@
 module github.com/zyclonite/fcct-service
 
-go 1.26
+go 1.27
 
 require (
 	github.com/coreos/butane v0.29.0
